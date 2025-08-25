@@ -4,14 +4,13 @@ server:
 spring:
   application:
     name: config-server
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: file://${user.home}/config-repo
-          default-label: main
-  profiles:
-    active: git
+        native:
+          search-locations: file:///C:/Users/Limani/config-repo
 
 logging:
   level:

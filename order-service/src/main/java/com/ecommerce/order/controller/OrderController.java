@@ -48,16 +48,16 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
     
-    //get order by ID
+    // get order by id
     @GetMapping("/{id}")
-    public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
+    public ResponseEntity<Order> getOrderById(@PathVariable("id") Long id) {
         logger.info("Fetching order with ID: {}", id);
         Optional<Order> order = orderService.getOrderById(id);
         return order.map(ResponseEntity::ok)
                    .orElse(ResponseEntity.notFound().build());
     }
     
-    //create new order
+    // create new order
     @PostMapping
     public ResponseEntity<?> createOrder(@Valid @RequestBody CreateOrderRequest orderRequest) {
         try {
@@ -89,25 +89,25 @@ public class OrderController {
         }
     }
     
-    //get orders by customer email
+    // get orders by customer email
     @GetMapping("/customer/{email}")
-    public ResponseEntity<List<Order>> getOrdersByCustomerEmail(@PathVariable String email) {
+    public ResponseEntity<List<Order>> getOrdersByCustomerEmail(@PathVariable("email") String email) {
         logger.info("Fetching orders for customer: {}", email);
         List<Order> orders = orderService.getOrdersByCustomerEmail(email);
         return ResponseEntity.ok(orders);
     }
     
-    //get orders by status
+    // get orders by status
     @GetMapping("/status/{status}")
-    public ResponseEntity<List<Order>> getOrdersByStatus(@PathVariable OrderStatus status) {
+    public ResponseEntity<List<Order>> getOrdersByStatus(@PathVariable("status") OrderStatus status) {
         logger.info("Fetching orders with status: {}", status);
         List<Order> orders = orderService.getOrdersByStatus(status);
         return ResponseEntity.ok(orders);
     }
     
-    //update order status
+    // update order status
     @PatchMapping("/{id}/status")
-    public ResponseEntity<?> updateOrderStatus(@PathVariable Long id, @RequestParam OrderStatus status) {
+    public ResponseEntity<?> updateOrderStatus(@PathVariable("id") Long id, @RequestParam OrderStatus status) {
         try {
             logger.info("Updating order {} status to {}", id, status);
             Order updatedOrder = orderService.updateOrderStatus(id, status);
@@ -121,9 +121,9 @@ public class OrderController {
         }
     }
     
-    //cancel order
+    // delete order
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, String>> deleteOrder(@PathVariable Long id) {
+    public ResponseEntity<Map<String, String>> deleteOrder(@PathVariable("id") Long id) {
         try {
             logger.info("Cancelling order: {}", id);
             orderService.deleteOrder(id);
@@ -141,9 +141,9 @@ public class OrderController {
         }
     }
     
-    //get order items
+    // get order items
     @GetMapping("/{id}/items")
-    public ResponseEntity<List<OrderItem>> getOrderItems(@PathVariable Long id) {
+    public ResponseEntity<List<OrderItem>> getOrderItems(@PathVariable("id") Long id) {
         logger.info("Fetching items for order: {}", id);
         List<OrderItem> orderItems = orderService.getOrderItems(id);
         return ResponseEntity.ok(orderItems);

@@ -21,6 +21,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+#JWT Configuration
+jwt:
+  secret: thisIsAVeryLongAndSecureSecretKeyForJWTAuthentication
+  expirationMs: 86400000
+
 logging:
   level:
     org.springframework.security: DEBUG

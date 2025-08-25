@@ -49,30 +49,39 @@ public class ProductController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @Valid @RequestBody Product productDetails) {
+    public ResponseEntity<Product> updateProduct(@PathVariable("id") Long id, @RequestBody Product productDetails) {
         Optional<Product> productOpt = productService.getProductById(id);
         if (productOpt.isPresent()) {
-            Product product = productOpt.get();
-            product.setName(productDetails.getName());
-            product.setDescription(productDetails.getDescription());
-            product.setPrice(productDetails.getPrice());
-            product.setStockQuantity(productDetails.getStockQuantity());
-            product.setCategory(productDetails.getCategory());
+            Product existingProduct = productOpt.get();
+            existingProduct.setName(productDetails.getName());
+            existingProduct.setDescription(productDetails.getDescription());
+            existingProduct.setPrice(productDetails.getPrice());
+            existingProduct.setStockQuantity(productDetails.getStockQuantity());
+            existingProduct.setCategory(productDetails.getCategory());
             
-            Product updatedProduct = productService.saveProduct(product);
+            Product updatedProduct = productService.saveProduct(existingProduct);
             return ResponseEntity.ok(updatedProduct);
         }
         return ResponseEntity.notFound().build();
     }
     
+  
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        Optional<Product> product = productService.getProductById(id);
-        if (product.isPresent()) {
-            productService.deleteProduct(id);
-            return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id) {
+        try {
+            Optional<Product> product = productService.getProductById(id);
+            if (product.isPresent()) {
+                productService.deleteProduct(id);
+                return ResponseEntity.noContent().build(); // 204 No Content
+            } else {
+                return ResponseEntity.notFound().build(); // 404 Not Found
+            }
+        } catch (Exception e) {
+            // Log the error for debugging
+            System.err.println("Error deleting product: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/category/{category}")

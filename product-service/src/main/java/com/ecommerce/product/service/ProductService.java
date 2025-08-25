@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.ecommerce.product.entity.Product;
 import com.ecommerce.product.repository.ProductRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductService {
     
@@ -31,8 +33,13 @@ public class ProductService {
     }
     
     // delete product
+    @Transactional
     public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+        if (productRepository.existsById(id)) {
+            productRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Product not found with id: " + id);
+        }
     }
     
     // get products by category
