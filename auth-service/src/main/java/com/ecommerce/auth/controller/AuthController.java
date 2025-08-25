@@ -1,5 +1,11 @@
 package com.ecommerce.auth.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,6 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -101,6 +109,43 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<Map<String, Object>>> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        List<Map<String, Object>> userSummaries = users.stream()
+            .map(user -> {
+                Map<String, Object> summary = new HashMap<>();
+                summary.put("id", user.getId());
+                summary.put("username", user.getUsername());
+                summary.put("email", user.getEmail());
+                summary.put("enabled", user.isEnabled());
+                summary.put("createdAt", user.getCreatedAt());
+                return summary;
+            })
+            .collect(Collectors.toList());
+        return ResponseEntity.ok(userSummaries);
+    }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<Map<String, Object>> getUserById(@PathVariable("id") Long id) {
+        Optional<User> userOpt = userRepository.findById(id);
+    
+    if (userOpt.isPresent()) {
+        User user = userOpt.get();
+        Map<String, Object> userSummary = new HashMap<>();
+        userSummary.put("id", user.getId());
+        userSummary.put("username", user.getUsername());
+        userSummary.put("email", user.getEmail());
+        userSummary.put("enabled", user.isEnabled());
+        userSummary.put("createdAt", user.getCreatedAt());
+        userSummary.put("updatedAt", user.getUpdatedAt());
+        
+        return ResponseEntity.ok(userSummary);
+    }
+    
+    return ResponseEntity.notFound().build();
+}
 
     
 }
