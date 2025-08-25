@@ -1,0 +1,12 @@
+com\ecommerce\auth\dto\LoginResponse.class
+com\ecommerce\auth\repository\UserRepository.class
+com\ecommerce\auth\entity\User.class
+com\ecommerce\auth\dto\MessageResponse.class
+com\ecommerce\auth\controller\AuthController.class
+com\ecommerce\auth\service\UserDetailsServiceImpl.class
+com\ecommerce\auth\dto\LoginRequest.class
+com\ecommerce\auth\util\JwtUtils.class
+com\ecommerce\auth\dto\SignupRequest.class
+com\ecommerce\auth\AuthServiceApplication.class
+com\ecommerce\auth\config\SecurityConfig.class
+com\ecommerce\auth\entity\Role.class

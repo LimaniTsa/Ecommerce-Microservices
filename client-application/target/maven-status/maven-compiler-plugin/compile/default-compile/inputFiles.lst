@@ -1,0 +1,10 @@
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\ClientApplication.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\config\RestTemplateConfig.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\controller\ClientInfoController.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\controller\ClientOrderController.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\controller\ClientProductController.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\dto\OrderDto.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\dto\OrderItemDto.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\dto\ProductDto.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\service\OrderServiceClient.java
+C:\Users\Limani\ecommerce-microservices\client-application\src\main\java\com\ecommerce\client\service\ProductServiceClient.java

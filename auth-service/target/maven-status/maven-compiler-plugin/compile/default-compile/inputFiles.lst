@@ -1,0 +1,12 @@
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\AuthServiceApplication.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\config\SecurityConfig.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\controller\AuthController.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\dto\LoginRequest.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\dto\LoginResponse.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\dto\MessageResponse.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\dto\SignupRequest.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\entity\Role.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\entity\User.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\repository\UserRepository.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\service\UserDetailsServiceImpl.java
+C:\Users\Limani\ecommerce-microservices\auth-service\src\main\java\com\ecommerce\auth\util\JwtUtils.java

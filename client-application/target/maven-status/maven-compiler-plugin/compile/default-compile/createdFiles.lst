@@ -1,0 +1,10 @@
+com\ecommerce\client\dto\ProductDto.class
+com\ecommerce\client\controller\ClientInfoController.class
+com\ecommerce\client\ClientApplication.class
+com\ecommerce\client\dto\OrderDto.class
+com\ecommerce\client\service\OrderServiceClient.class
+com\ecommerce\client\dto\OrderItemDto.class
+com\ecommerce\client\config\RestTemplateConfig.class
+com\ecommerce\client\controller\ClientOrderController.class
+com\ecommerce\client\controller\ClientProductController.class
+com\ecommerce\client\service\ProductServiceClient.class

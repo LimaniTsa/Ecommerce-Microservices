@@ -1,0 +1,18 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: file://${user.home}/config-repo
+          default-label: main
+  profiles:
+    active: git
+
+logging:
+  level:
+    org.springframework.cloud.config: DEBUG
